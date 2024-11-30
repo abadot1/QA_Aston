@@ -1,17 +1,24 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Задание 1
+        System.out.println("Задание 1");
+        Employee empl = new Employee();
+        empl.infoEmployee();
+
+        //Задание 2
+        System.out.println("Задание 2");
+        Person[] persArray = new Person[5];
+        persArray[0] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3000, 32);
+        persArray[1] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3300, 35);
+        persArray[2] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3300, 48);
+        persArray[3] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3300, 88);
+        persArray[4] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3300, 77);
+
+        //задание 3
     }
 }
