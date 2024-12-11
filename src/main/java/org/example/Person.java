@@ -1,15 +1,15 @@
 package org.example;
 
 public class Person {
-    String fullName;
-    String jobTitle;
-    String email;
-    int phone;
-    int salary;
-    int age;
+    protected String fullName;
+    protected String jobTitle;
+    protected String email;
+    protected int phone;
+    protected int salary;
+    protected int age;
 
-    Person(String fullName, String jobTitle, String email, int phone,
-           int salary, int age) {
+    public Person(String fullName, String jobTitle, String email, int phone,
+                  int salary, int age) {
         this.fullName = fullName;
         this.jobTitle = jobTitle;
         this.email = email;

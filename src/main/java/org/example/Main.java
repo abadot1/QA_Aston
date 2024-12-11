@@ -20,5 +20,9 @@ public class Main {
         persArray[4] = new Person("Ivanov Ivan", "Engineer", "ivanov@gmail.com", 256987544, 3300, 77);
 
         //задание 3
+        System.out.println("Задание 3");
+        Park park = new Park();
+        park.atraction.dysplayAtraction();
+
     }
 }

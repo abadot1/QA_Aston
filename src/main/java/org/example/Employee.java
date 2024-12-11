@@ -1,14 +1,14 @@
 package org.example;
 
 public class Employee {
-    String fullNname;
-    String jobTitle;
-    String email;
-    int phone;
-    int salary;
-    int age;
+    protected String fullNname;
+    protected String jobTitle;
+    protected String email;
+    protected int phone;
+    protected int salary;
+    protected int age;
 
-    Employee() {
+    public Employee() {
         fullNname = "Иванов Иван Иванович";
         jobTitle = "мастер";
         email = "ivanov@gmail.com";
@@ -17,7 +17,7 @@ public class Employee {
         age = 35;
     }
 
-    void infoEmployee() {
+    public void infoEmployee() {
         System.out.println("ФИО: " + fullNname + ", должность: " + jobTitle +
                 ", email: " + email + ", телефон: " + phone + ", зарплата: " + salary
                 + ", возраст: " + age);
