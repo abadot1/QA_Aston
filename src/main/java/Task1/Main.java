@@ -3,22 +3,38 @@ package Task1;
 public class Main {
     public static void main(String[] args) {
 
-        Dog bobik = new Dog(470, "Bobik");
+        Cat murka = new Cat();
+        murka.run("Мурка", 300);
+        Cat sosiska = new Cat();
+        sosiska.swim("Сосиска", 4);
+        Cat murzik = new Cat();
+        murzik.run("Мурзик", 100);
 
-        Dog sharik = new Dog("Sharik", 25);
+        Dog bobik = new Dog();
+        bobik.run("Бобик", 400);
+        Dog sharik = new Dog();
+        sharik.swim("Шарик", 5);
+
+        Bowl bowl = new Bowl(30);
 
         Cat[] cats;
         cats = new Cat[3];
-        cats[0] = new Cat(22, "Barsik", false, 10);
-        cats[1] = new Cat("Bosia", 44, false, 13);
-        cats[2] = new Cat(147, "Murka", false, 15);
+        cats[0] = new Cat("Мурка", false, 20);
+        cats[1] = new Cat("Сосиска", false, 15);
+        cats[2] = new Cat("Мурзик", false, 10);
 
         for (int i = 0; i < cats.length; i++){
-            Cat.eatCat(cats[i].name, cats[i].needFood, cats[i].satiety);
+            cats[i].eatFood(bowl, cats[i].name,  cats[i].needFood );
         }
 
-        System.out.println("Count Animal: " + Animal.getCountAnimal());
-        System.out.println("Count Cat: " + Cat.getCountCat());
-        System.out.println("Count Dog: " + Dog.getCountDog());
+        bowl.addFood(40);
+
+        for (int i = 0; i < cats.length; i++){
+            cats[i].eatFood(bowl, cats[i].name,  cats[i].needFood );
+        }
+
+        System.out.println("Count Animal: " + Animal.countAnimal);
+        System.out.println("Count Cat: " + Cat.countCat);
+        System.out.println("Count Dog: " + Dog.countDog);
     }
 }

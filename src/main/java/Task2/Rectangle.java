@@ -1,6 +1,6 @@
 package Task2;
 
-public class Rectangle implements Shape, ColorFilling, ColorBorder {
+public class Rectangle implements Shape, Color {
     public double a;
     public double b;
     public String colorBorder;
@@ -31,10 +31,9 @@ public class Rectangle implements Shape, ColorFilling, ColorBorder {
         this.colorFilling = colorFilling;
     }
 
-    public void getCircle() {
+    public void getRectangle() {
         System.out.println("Прямоугольник:");
-        System.out.println("Периметр: " + calculatePerimeter());
-        System.out.println("Площадь: " + calculateArea());
+        printPerimetrAndArea();
         System.out.println("Цвет заливки: " + colorFilling);
         System.out.println("Цвет границы: " + colorBorder);
     }

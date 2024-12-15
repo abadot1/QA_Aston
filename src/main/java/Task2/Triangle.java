@@ -1,18 +1,16 @@
 package Task2;
 
-public class Triangle implements Shape, ColorFilling, ColorBorder {
+public class Triangle implements Shape, Color {
     public double a;
     public double b;
     public double c;
-    public double h;
     public String colorBorder;
     public String colorFilling;
 
-    public Triangle(double a, double b, double c, double h){
+    public Triangle(double a, double b, double c) {
         this.a = a;
         this.b = b;
         this.c = c;
-        this.h = h;
     }
 
     @Override
@@ -22,7 +20,8 @@ public class Triangle implements Shape, ColorFilling, ColorBorder {
 
     @Override
     public double calculateArea() {
-        return 0.5 * a * h;
+        return Math.sqrt(calculatePerimeter() / 2 * (calculatePerimeter() / 2 - a) * (calculatePerimeter() / 2 - b)
+                * (calculatePerimeter() / 2 - c));
     }
 
     @Override
@@ -35,10 +34,9 @@ public class Triangle implements Shape, ColorFilling, ColorBorder {
         this.colorFilling = colorFilling;
     }
 
-    public void getCircle(){
+    public void getTriangle() {
         System.out.println("Треугольник:");
-        System.out.println("Периметр: " + calculatePerimeter());
-        System.out.println("Площадь: " + calculateArea());
+        printPerimetrAndArea();
         System.out.println("Цвет заливки: " + colorFilling);
         System.out.println("Цвет границы: " + colorBorder);
     }

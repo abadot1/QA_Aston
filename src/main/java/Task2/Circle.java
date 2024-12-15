@@ -1,6 +1,6 @@
 package Task2;
 
-public class Circle implements Shape, ColorFilling, ColorBorder {
+public class Circle implements Shape, Color {
     public double radius;
     public String colorBorder;
     public String colorFilling;
@@ -31,8 +31,7 @@ public class Circle implements Shape, ColorFilling, ColorBorder {
 
     public void getCircle(){
         System.out.println("Круг:");
-        System.out.println("Периметр: " + calculatePerimeter());
-        System.out.println("Площадь: " + calculateArea());
+        printPerimetrAndArea();
         System.out.println("Цвет заливки: " + colorFilling);
         System.out.println("Цвет границы: " + colorBorder);
     }

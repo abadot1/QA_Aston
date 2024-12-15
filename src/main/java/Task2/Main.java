@@ -11,11 +11,11 @@ public class Main {
         Rectangle rectangle = new Rectangle(2, 4);
         rectangle.colorFilling("red");
         rectangle.colorBorder("black");
-        rectangle.getCircle();
+        rectangle.getRectangle();
 
-        Triangle triangle = new Triangle(2, 4, 8, 5);
+        Triangle triangle = new Triangle(2, 4, 5);
         triangle.colorFilling("red");
         triangle.colorBorder("black");
-        triangle.getCircle();
+        triangle.getTriangle();
     }
 }
