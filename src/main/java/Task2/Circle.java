@@ -1,9 +1,9 @@
 package Task2;
 
 public class Circle implements Shape, Color {
-    public double radius;
-    public String colorBorder;
-    public String colorFilling;
+    private double radius;
+    private String colorBorder;
+    private String colorFilling;
 
     public Circle(double radius){
         this.radius = radius;

@@ -1,11 +1,11 @@
 package Task2;
 
 public class Triangle implements Shape, Color {
-    public double a;
-    public double b;
-    public double c;
-    public String colorBorder;
-    public String colorFilling;
+    private double a;
+    private double b;
+    private double c;
+    private String colorBorder;
+    private String colorFilling;
 
     public Triangle(double a, double b, double c) {
         this.a = a;

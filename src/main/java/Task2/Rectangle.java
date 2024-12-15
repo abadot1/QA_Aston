@@ -1,10 +1,10 @@
 package Task2;
 
 public class Rectangle implements Shape, Color {
-    public double a;
-    public double b;
-    public String colorBorder;
-    public String colorFilling;
+    private double a;
+    private double b;
+    private String colorBorder;
+    private String colorFilling;
 
     public Rectangle(double a, double b) {
         this.a = a;
