@@ -4,14 +4,44 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
+        int value = 0;
+        String[][] arr = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        };
+
+        try {
+            value = testArray(arr);
+        } catch (MyArraySizeException e) {
+            System.out.println(e.getMessage());
+        } catch (MyArrayDataException e) {
+            System.out.println(e.getMessage());
         }
+        System.out.println("Результат расчета " + value);
+    }
+
+    public static int testArray(String[][] arr) throws MyArraySizeException, MyArrayDataException {
+        int sum = 0;
+        int row;
+        int cell;
+
+        if (arr.length != 4 || arr[0].length != 4 || arr[1].length != 4 || arr[2].length != 4 || arr[3].length != 4) {
+            throw new MyArraySizeException();
+        }
+
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr[i].length; j++){
+                try{
+                    sum += Integer.parseInt(arr[i][j]);
+                } catch (NumberFormatException e){
+                    throw new MyArrayDataException(i, j);
+                }
+            }
+        }
+
+        return sum;
     }
 }
