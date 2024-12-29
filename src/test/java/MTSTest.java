@@ -25,25 +25,28 @@ public class MTSTest {
 
     @Test
     public void titleTest() {
-        assertTrue(new PayPage(driver).tittle().replaceAll("\\r\\n|\\r|\\n|\\s+", " ").toLowerCase().
-                equals("Онлайн пополнение без комиссии".toLowerCase()));
+        assertTrue(new PayPage(driver).tittle().replaceAll("\\r\\n|\\r|\\n|\\s+", " ")
+                .toLowerCase()
+                .equals("Онлайн пополнение без комиссии".toLowerCase()));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"Visa", "Verified By Visa", "MasterCard", "MasterCard Secure Code", "Белкарт"})
     public void logoPayTest(String logo) {
-          assertTrue(new PayPage(driver).compareLogoPay(logo));
+        assertTrue(new PayPage(driver).compareLogoPay(logo));
     }
 
     @Test
     public void aboutServiceTest() {
         new PayPage(driver).aboutService();
-        assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
+        assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/",
+                driver.getCurrentUrl());
     }
 
     @Test
     public void communicationServiceTest() {
-        assertTrue(!new PayPage(driver).communicationSubmit("Услуги связи", "297777777", "25")
+        assertTrue(!new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
                 .bepaid());
     }
 
@@ -56,7 +59,7 @@ public class MTSTest {
     }
 
     @Test
-    public void placeholderSumCommunicationTest(){
+    public void placeholderSumCommunicationTest() {
         PayPage payPage = PageFactory.initElements(driver, PayPage.class);
         payPage.openServices();
         payPage.selectService("Услуги связи");
@@ -68,11 +71,11 @@ public class MTSTest {
         PayPage payPage = PageFactory.initElements(driver, PayPage.class);
         payPage.openServices();
         payPage.selectService("Домашний интернет");
-        assertEquals("Номер абонента", payPage.inputNumberInternet() );
+        assertEquals("Номер абонента", payPage.inputNumberInternet());
     }
 
     @Test
-    public void placeholderSumInternetTest(){
+    public void placeholderSumInternetTest() {
         PayPage payPage = PageFactory.initElements(driver, PayPage.class);
         payPage.openServices();
         payPage.selectService("Домашний интернет");
@@ -88,7 +91,7 @@ public class MTSTest {
     }
 
     @Test
-    public void placeholderSumCreditTest(){
+    public void placeholderSumCreditTest() {
         PayPage payPage = PageFactory.initElements(driver, PayPage.class);
         payPage.openServices();
         payPage.selectService("Рассрочка");
@@ -104,7 +107,7 @@ public class MTSTest {
     }
 
     @Test
-    public void placeholderSumDebtTest(){
+    public void placeholderSumDebtTest() {
         PayPage payPage = PageFactory.initElements(driver, PayPage.class);
         payPage.openServices();
         payPage.selectService("Задолженность");
@@ -112,10 +115,59 @@ public class MTSTest {
     }
 
     @Test
-    public void sumHeaderTest(){
-        FormPayPage payPage = new PayPage(driver).communicationSubmit("Услуги связи", "297777777", "25");
-        assertEquals("25.00 BYN", payPage.summaHeader());
+    public void sumHeaderTest() throws InterruptedException {
+        assertEquals("25.00 BYN", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .summaHeader());
     }
+
+    @Test
+    public void sumButtonTest() throws InterruptedException {
+        assertEquals("Оплатить 25.00 BYN", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .summaButton());
+    }
+
+    @Test
+    public void numberFormPayTest() throws InterruptedException {
+        assertEquals("Оплата: Услуги связи Номер:375297777777", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .numPhone());
+    }
+
+    @Test
+    public void numberCardFormPayTest() throws InterruptedException {
+        assertEquals("Номер карты", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .numCard());
+    }
+
+    @Test
+    public void numberCVCFormPayTest() throws InterruptedException {
+        assertEquals("CVC", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .numCVC());
+    }
+
+    @Test
+    public void nameFormPayTest() throws InterruptedException {
+        assertEquals("Имя держателя (как на карте)", new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .nameCard());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"assets/images/payment-icons/card-types/visa-system.svg",
+            "assets/images/payment-icons/card-types/mastercard-system.svg",
+            "assets/images/payment-icons/card-types/belkart-system.svg",
+            "assets/images/payment-icons/card-types/maestro-system.svg",
+            "assets/images/payment-icons/card-types/mir-system-ru.svg"})
+    public void logoFormPayTest(String logoPay) throws InterruptedException {
+        assertTrue(new PayPage(driver)
+                .communicationSubmit("Услуги связи", "297777777", "25")
+                .compareLogoFormPay(logoPay));
+    }
+
 
     @AfterEach
     public void closeSite() {

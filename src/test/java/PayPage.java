@@ -94,35 +94,35 @@ public class PayPage {
         return buttonSubmit();
     }
 
-    public String inputNumberCommunication(){
-       return driver.findElement(number).getDomAttribute("placeholder");
+    public String inputNumberCommunication() {
+        return driver.findElement(number).getDomAttribute("placeholder");
     }
 
-    public String inputSumCommunication(){
+    public String inputSumCommunication() {
         return driver.findElement(summa).getDomAttribute("placeholder");
     }
 
-    public String inputNumberInternet(){
+    public String inputNumberInternet() {
         return driver.findElement(numberInternet).getDomAttribute("placeholder");
     }
 
-    public String inputSumInternet(){
+    public String inputSumInternet() {
         return driver.findElement(summaInternet).getDomAttribute("placeholder");
     }
 
-    public String inputNumberCredit(){
+    public String inputNumberCredit() {
         return driver.findElement(numberCredit).getDomAttribute("placeholder");
     }
 
-    public String inputSumCredit(){
+    public String inputSumCredit() {
         return driver.findElement(summaCredit).getDomAttribute("placeholder");
     }
 
-    public String inputNumberDebt(){
+    public String inputNumberDebt() {
         return driver.findElement(numberDebt).getDomAttribute("placeholder");
     }
 
-    public String inputSumDebt(){
+    public String inputSumDebt() {
         return driver.findElement(summaDebt).getDomAttribute("placeholder");
     }
 }
