@@ -23,7 +23,7 @@ public class MtsTest {
     public void openSite() {
         driver.get("https://www.mts.by/");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        Boolean isCookie = driver.findElements(By.className("show")).isEmpty();
+        boolean isCookie = driver.findElements(By.className("show")).isEmpty();
         if (!isCookie) {
             WebElement agreeCookie = driver.findElement(By.id("cookie-agree"));
             agreeCookie.click();
@@ -37,20 +37,11 @@ public class MtsTest {
                 ("\\r\\n|\\r|\\n|\\s+", " ").toLowerCase());
     }
 
-    public boolean compareLogoPay(String expectedLogoPay, List<WebElement> actualLogoPay) {
-        for (WebElement element : actualLogoPay) {
-            if (element.getDomAttribute("alt").equals(expectedLogoPay)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"Visa", "Verified By Visa", "MasterCard", "MasterCard Secure Code", "Белкарт"})
     public void logoPayTest(String logo) {
         List<WebElement> logoPay = driver.findElements(By.xpath("//div[@class='pay__partners']/ul/li/img"));
-        assertEquals(true, compareLogoPay(logo, logoPay));
+        assertTrue(CompareLogo.compareLogoPay(logo, logoPay));
     }
 
     @Test
