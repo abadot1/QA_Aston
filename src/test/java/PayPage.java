@@ -49,6 +49,11 @@ public class PayPage {
         return false;
     }
 
+    public int qtLogoPay(){
+        List<WebElement> logoPay = driver.findElements(logo);
+        return logoPay.size();
+    }
+
     public AboutServicePage aboutService() {
         WebElement aboutService = driver.findElement(elemAboutService);
         aboutService.click();
