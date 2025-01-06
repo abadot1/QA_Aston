@@ -43,10 +43,15 @@ public class PayPage {
         List<WebElement> logoPay = driver.findElements(logo);
         for (WebElement element : logoPay) {
             if (element.getDomAttribute("alt").equals(expectedLogoPay)) {
-                return true;
+                return element.isDisplayed();
             }
         }
         return false;
+    }
+
+    public int qtLogoPay(){
+        List<WebElement> logoPay = driver.findElements(logo);
+        return logoPay.size();
     }
 
     public AboutServicePage aboutService() {
@@ -126,5 +131,3 @@ public class PayPage {
         return driver.findElement(summaDebt).getDomAttribute("placeholder");
     }
 }
-
-
